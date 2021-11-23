@@ -26,6 +26,6 @@ double Speed() const override {
 
 };
 
-ostream& operator<<(ostream& os, const Fahrrad& fr) {
-    return fr.vAusgeben(os);
-}
+// ostream& operator<<(ostream& os, const Fahrrad& fr) {
+//     return fr.vAusgeben(os);
+// }

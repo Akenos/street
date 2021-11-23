@@ -70,6 +70,6 @@ public:
 
 };
 
-ostream& operator<<(ostream& os, const PKW& pkw){
-	return pkw.vAusgeben(os);
-};
+// ostream& operator<<(ostream& os, const PKW& pkw){
+// 	return pkw.vAusgeben(os);
+// };

@@ -12,8 +12,10 @@ public:
 	};
 
 	SimulationsObjekt(string a) :name(a), maxID(0), iD(0), zeit(0){};
-
-	~SimulationsObjekt() { //cout << "Destr"<<iD << name; 
+	SimulationsObjekt(const SimulationsObjekt& other) = delete; // ich will keine SimulationsObjekte,die gleiche ID haben
+																// Funktionsparameter ohne & (why?)
+	
+	~SimulationsObjekt() { //cout << "Destr"<<iD << name;       
 	};
 
 	static void vKopf() {
@@ -29,6 +31,17 @@ public:
 	void vSimulieren() {
 		zeit = Globaltime;
 	}
+	SimulationsObjekt& operator=(const SimulationsObjekt& other) {
+		
+		if(this != other){			//ohne diese Funktion,Default wuerde aktivert werden
+			name = other.name;		// unmoeglich, dass Elemete der Unterklasse zugewiest werden
+			//iD = other.iD;
+			//maxID = other.maxID;
+			zeit = other.zeit;
+		}
+		return *this;
+	}
+
 
 protected:
 	string name;

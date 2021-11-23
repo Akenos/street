@@ -56,13 +56,14 @@ public:
 	double getAbschnittstrecke(); 
 	
 	bool operator<(const Fahrzeug& other) {
-		return this->iD < other.iD;
+		return totalStreet < other.totalStreet;
 	}
 
 	void neueStrecke(); 
 	void Zeichnen();
 };
 
-ostream& operator<<(ostream& os, const Fahrzeug& fz){
-	return fz.vAusgeben(os);
-}
+// ostream& operator<<(ostream& os, const Fahrzeug& fz){
+// 	return fz.vAusgeben(os);
+// }
+
