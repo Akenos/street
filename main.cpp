@@ -3,6 +3,7 @@
 #include "Fahrzeug.h"
 #include "PKW.h"
 #include "Fahrrad.h"
+#include "Weg.h"
 #include <vector>
 
 double Globaltime = 0.0;
@@ -11,6 +12,17 @@ using namespace std;
 vector<unique_ptr<Fahrzeug>> get_data_set()
 {
 	vector<unique_ptr<Fahrzeug>> gg;
+	gg.push_back(make_unique<PKW>("pkw1", 75, 5));
+	gg.push_back(make_unique<PKW>("pkw2", 70, 10));
+	gg.push_back(make_unique<PKW>("pkw3", 50, 5));
+	gg.emplace_back(make_unique<Fahrrad>("fr1", 40));
+	gg.emplace_back(make_unique<Fahrrad>("fr2", 15));
+	gg.emplace_back(make_unique<Fahrrad>("fr3", 70));
+	return std::move(gg);
+}
+list<unique_ptr<Fahrzeug>> get_data_set_list()
+{
+	list<unique_ptr<Fahrzeug>> gg;
 	gg.push_back(make_unique<PKW>("pkw1", 75, 5));
 	gg.push_back(make_unique<PKW>("pkw2", 70, 10));
 	gg.push_back(make_unique<PKW>("pkw3", 50, 5));
@@ -116,9 +128,20 @@ void vAufgabe_1a()
 		cout << *fz;
 	}
 }
+void Auafgabe_4(){
+	Weg a {"test",200};
+	//list<unique_ptr<Fahrzeug>> gg = get_data_set_list();
+	//a.Fahrzeuge = std::move(gg);
+
+	a.vKopf();
+	cout << a;
+}
 
 int main()
 {
-	vAufgabe_2();
+	Auafgabe_4();
+	cout << endl;
+
+	// vAufgabe_2();
 	return 0;
 }

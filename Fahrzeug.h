@@ -27,13 +27,8 @@ public:
 		os << setw(30) << maxSpeed << setw(25) << totalStreet << setw(35) << Speed();
 		return os;
 	}
-	static void vKopf() {
-		  
-		  SimulationsObjekt::vKopf();
-		  cout  << setw(30) << "MaxGeschwindigkeit (km/h)" <<   setw(25) << "Gesamtstrecke [km/h]" <<   setw(35) << "akt. Geschwindigkeit [km]";
-		  //cout << "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------" <<   endl;
-	}
-	virtual void vSimulieren() {
+	
+	void vSimulieren() override {
 		if (Globaltime > zeit) {
 			double time_flowd = Globaltime - zeit;
 			for (size_t i = 0; i < time_flowd; i++)
