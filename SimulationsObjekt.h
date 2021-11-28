@@ -28,12 +28,12 @@ public:
 		return os;
 	};
 	void vEinlesen();
-	void vSimulieren() {
+	virtual void vSimulieren() {
 		zeit = Globaltime;
 	}
 	SimulationsObjekt& operator=(const SimulationsObjekt& other) {
 		
-		if(this != other){			//ohne diese Funktion,Default wuerde aktivert werden
+		if(this != &other){			//ohne diese Funktion,Default wuerde aktivert werden
 			name = other.name;		// unmoeglich, dass Elemete der Unterklasse zugewiest werden
 			//iD = other.iD;
 			//maxID = other.maxID;
@@ -41,7 +41,16 @@ public:
 		}
 		return *this;
 	}
-
+	bool operator==(const SimulationsObjekt& other){
+		
+		return iD==other.iD;
+		// if(iD == other.iD)
+		// 	return true;
+		// return false;
+	};
+	string getName(){
+		return name;
+	}
 
 protected:
 	string name;
