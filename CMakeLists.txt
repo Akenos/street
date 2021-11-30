@@ -5,4 +5,7 @@ project(Street)
 
 # add the executable
 add_executable(jabu 
-    main.cpp)
+    main.cpp
+    Verhalten.cpp
+    Fahrzeug.cpp
+    SimulationsObjekt.cpp)

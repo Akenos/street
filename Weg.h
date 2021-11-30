@@ -3,11 +3,11 @@
 #include "Kreuzung.h"
 #include "SimulationsObjekt.h"
 #include "Tempolimit.h"
+#include "Verhalten.h"
 #include <list>
 #include <memory>
 #include <ostream>
 #include <vector>
-
 
 using namespace std;
 
@@ -38,7 +38,7 @@ public:
     SimulationsObjekt::vAusgeben(os);
     os << setw(30) << Laenge << setw(25) << "(";
     for (auto &fz : Fahrzeuge)
-      os << fz->getName() << ", ";
+      os << fz->getName() << ":" << fz->getAbschnittstrecke() << ", ";
     os << ")";
     return os;
   };
@@ -50,6 +50,11 @@ public:
             "------------------------------"
          << endl;
   };
+
+  void Annahme(unique_ptr<Fahrzeug> a) {
+    a->neueStrecke(*this);
+    Fahrzeuge.push_back(std::move(a));
+  }
 
   double getLange() const { return Laenge; };
   double getSchranke() const { return Schranke; };
