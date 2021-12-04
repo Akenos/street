@@ -123,9 +123,9 @@ void Auafgabe_4() {
 }
 void Aufgabe_5() {
   Weg a{"sdjn", 350, Innerorts};
-  a.Annahme(std::make_unique<Fahrzeug>("car1", 88));
-  a.Annahme(std::make_unique<Fahrzeug>("car2", 8));
-  a.Annahme(std::make_unique<Fahrzeug>("car3", 56));
+  a.Annahme(std::make_unique<Fahrzeug>("car1", 88), -1);
+  a.Annahme(std::make_unique<Fahrzeug>("car2", 8), 11);
+  a.Annahme(std::make_unique<Fahrzeug>("car3", 56), 5);
   a.vKopf();
   for (size_t i = 0; i < 10; i++) {
     cout << a << endl;
@@ -134,8 +134,25 @@ void Aufgabe_5() {
   }
 }
 
+void Aufgabe_6() {
+  Weg a{"Pontrst", 350, Innerorts};
+  Weg b{"einbahnstr", 550, Landstr};
+
+  a.Annahme(std::make_unique<Fahrzeug>("car1", 88), -1);
+  a.Annahme(std::make_unique<Fahrzeug>("car2", 8), 11);
+  b.Annahme(std::make_unique<Fahrzeug>("car3", 56), 5);
+  b.Annahme(std::make_unique<Fahrzeug>("car4", 60), 2);
+  a.vKopf();
+  b.vKopf();
+  for (size_t i = 0; i < 10; i++) {
+    cout << a << endl;
+    a.vSimulieren();
+    b.vSimulieren();
+    Globaltime++;
+  }
+}
 int main() {
-  Aufgabe_5();
+  Aufgabe_6();
   cout << endl;
 
   // vAufgabe_2();

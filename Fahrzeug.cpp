@@ -1,5 +1,6 @@
 #pragma once
 #include "Fahrzeug.h"
+//#include "Parken.h"
 #include "SimulationsObjekt.h"
 #include "Verhalten.h"
 #include "Weg.h"
@@ -45,6 +46,11 @@ bool Fahrzeug::operator<(const Fahrzeug &other) {
 
 void Fahrzeug::neueStrecke(Weg &a) {
   verhalten = std::make_unique<Verhalten>(a);
+  abschnittstrecke = 0;
+};
+
+void Fahrzeug::neueStrecke(Weg &a, double time) {
+  verhalten = std::unique_ptr<Verhalten>(new Parken(a, time));
   abschnittstrecke = 0;
 };
 

@@ -4,6 +4,7 @@
 
 class Fahrzeug;
 class Weg;
+class Parken;
 
 class Verhalten {
 
@@ -15,6 +16,7 @@ public:
   Verhalten(Weg &road) : zam(road) {}
 
   // how far can we drive in current street within zeitinterval?
-  double Strecke(Fahrzeug &aFzg, double Zeitintervall);
+  virtual double Strecke(Fahrzeug &aFzg, double Zeitintervall);
+  // double SpeedLimit();
   Weg &getWeg() { return zam; };
 };

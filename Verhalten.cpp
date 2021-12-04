@@ -6,6 +6,9 @@
 
 // how far can we drive in current street within zeitinterval?
 double Verhalten::Strecke(Fahrzeug &aFzg, double Zeitintervall) {
+  if (Zeitintervall < 0)
+    return 0;
+
   double fzSpeed = aFzg.Speed();
   if (fzSpeed > zam.getTempolimit())
     fzSpeed = zam.getTempolimit();
@@ -19,4 +22,12 @@ double Verhalten::Strecke(Fahrzeug &aFzg, double Zeitintervall) {
   } else {
     return restStrecke;
   }
+
+  /*double Verhalten::SpeedLimit(){
+
+    switch(zam->getWeg()){
+
+    }
+
+  }*/
 };

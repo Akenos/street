@@ -1,4 +1,5 @@
 #pragma once
+#include "Fahrausnahme.h"
 #include "Fahrzeug.h"
 #include "Kreuzung.h"
 #include "SimulationsObjekt.h"
@@ -30,8 +31,12 @@ public:
             // cout << "Const" << iD << name << maxSpeed;
         };
   void vSimulieren() override {
-    for (auto &i : Fahrzeuge) {
-      i->vSimulieren();
+    try {
+      for (auto &i : Fahrzeuge) {
+        i->vSimulieren();
+      }
+    } catch (Fahrausnahme &e) {
+      e.Bearbeiten();
     }
   };
   ostream &vAusgeben(ostream &os) const override {
@@ -43,16 +48,20 @@ public:
     return os;
   };
   static void vKopf() {
-
     SimulationsObjekt::vKopf();
     cout << setw(30) << "Laenge" << setw(25) << "Fahrzuege" << endl;
-    cout << "------------------------------------------------------------------"
+    cout << "----------------------------------------------------------------"
+            "--"
             "------------------------------"
          << endl;
   };
 
   void Annahme(unique_ptr<Fahrzeug> a) {
     a->neueStrecke(*this);
+    Fahrzeuge.push_back(std::move(a));
+  }
+  void Annahme(unique_ptr<Fahrzeug> a, double strt_time) {
+    a->neueStrecke(*this, strt_time);
     Fahrzeuge.push_back(std::move(a));
   }
 

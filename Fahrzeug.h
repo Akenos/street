@@ -1,9 +1,11 @@
 #pragma once
+#include "Parken.h"
 #include "SimulationsObjekt.h"
 #include "Verhalten.h"
 #include <iomanip>
 #include <iostream>
 #include <limits>
+
 
 extern double Globaltime;
 
@@ -48,6 +50,8 @@ public:
   bool operator<(const Fahrzeug &other);
 
   void neueStrecke(Weg &a);
+
+  void neueStrecke(Weg &a, double time);
 
   void Zeichnen();
 };
