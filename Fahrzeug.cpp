@@ -54,7 +54,14 @@ void Fahrzeug::neueStrecke(Weg &a, double time) {
   abschnittstrecke = 0;
 };
 
-void Zeichnen(){};
+// void Fahrzeug::Zeichnen(Weg &a) const {
+//   double pos = abschnittstrecke / a.getLange();
+//   if (pos < 0)
+//     pos = 0;
+//   pos = 1;
+
+//   bz
+// };
 
 // ostream& operator<<(ostream& os, const Fahrzeug& fz){
 // 	return fz.vAusgeben(os);

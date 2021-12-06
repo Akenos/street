@@ -9,4 +9,5 @@ add_executable(jabu
     Verhalten.cpp
     Fahrzeug.cpp
     SimulationsObjekt.cpp
-    Parken.cpp)
+    Parken.cpp
+    PKW.cpp)

@@ -1,5 +1,6 @@
 #include "Fahrrad.h"
 #include "Fahrzeug.h"
+#include "GUI/SimuClient.h"
 #include "PKW.h"
 #include "SimulationsObjekt.h"
 #include "Weg.h"
@@ -135,20 +136,37 @@ void Aufgabe_5() {
 }
 
 void Aufgabe_6() {
-  Weg a{"Pontrst", 350, Innerorts};
+  Weg a{"Pontstr", 350, Innerorts};
   Weg b{"einbahnstr", 550, Landstr};
 
-  a.Annahme(std::make_unique<Fahrzeug>("car1", 88), -1);
-  a.Annahme(std::make_unique<Fahrzeug>("car2", 8), 11);
-  b.Annahme(std::make_unique<Fahrzeug>("car3", 56), 5);
-  b.Annahme(std::make_unique<Fahrzeug>("car4", 60), 2);
+  std::unique_ptr<PKW> car1 = std::make_unique<PKW>("Audi", 120, 9);
+  std::unique_ptr<PKW> car2 = std::make_unique<PKW>("BMW", 56, 11);
+  std::unique_ptr<PKW> car3 = std::make_unique<PKW>("Toyota", 80, 5);
+  std::unique_ptr<PKW> car4 = std::make_unique<PKW>("Aseag", 50, 2);
+  // PKW car1("Audi", 120, 9);
+  // PKW car2("BMW", 56, 11);
+  // PKW car3("Toyota", 80, 5);
+  // PKW car4("Aseag", 50, 2);
+
+  a.Annahme(std::move(car1));
+  b.Annahme(std::move(car2));
+  a.Annahme(std::move(car3));
+  b.Annahme(std::move(car4));
+
+  // b.vKopf();
+
+  bInitialisiereGrafik(800, 600);
+  int Coords[] = {100, 200, 700, 400};
+  bZeichneStrasse("Pontstr", "einbahnstr", 500, 2, Coords);
   a.vKopf();
-  b.vKopf();
   for (size_t i = 0; i < 10; i++) {
     cout << a << endl;
     a.vSimulieren();
     b.vSimulieren();
-    Globaltime++;
+    vSetzeZeit(i);
+    car1->Zeichnen(a);
+
+    vSleep(500);
   }
 }
 int main() {
