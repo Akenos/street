@@ -6,7 +6,6 @@
 #include <iostream>
 #include <limits>
 
-
 extern double Globaltime;
 
 using namespace std;
@@ -53,7 +52,7 @@ public:
 
   void neueStrecke(Weg &a, double time);
 
-  void Zeichnen();
+  // virtual void Zeichnen(Weg &a) const;
 };
 
 // ostream& operator<<(ostream& os, const Fahrzeug& fz){

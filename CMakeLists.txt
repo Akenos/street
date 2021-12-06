@@ -11,3 +11,8 @@ add_executable(jabu
     SimulationsObjekt.cpp
     Parken.cpp
     PKW.cpp)
+
+link_directories(${CMAKE_SOURCE_DIR}/GUI)
+
+target_link_libraries(jabu
+    SimuClient)
